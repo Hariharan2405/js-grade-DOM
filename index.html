@@ -1,0 +1,91 @@
+<!DocType html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="">
+		<meta name="keywords" content="HTML,JavaScript">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Grade</title>	
+		<style>
+			
+		</style>
+	
+	</head>
+	
+	<body>
+	<section>
+		<form id="form">
+			<label for="tamil">Tamil :<label>
+			<input type="text" id="tamil" required><br><br>
+			
+			<label for="english">English :<label>
+			<input type="text" id="english" required><br><br>
+			
+			<label for="math">Math :<label>
+			<input type="text" id="math" required><br><br>
+			
+			<label for="science">Science :<label>
+			<input type="text" id="science" required><br><br>
+			
+			<label for="social">Social science :<label>
+			<input type="text" id="social" required><br><br>
+			
+			<button id="btn">Submit</button>
+		</form>
+		
+		<div>
+			<p id="total"></p>
+			<p id="avg"></p>
+			<p id="grade"></p>
+		</div>
+	
+	</section>
+	
+	<script>
+		
+		var total=document.getElementById("total");
+		var average=document.getElementById("avg");
+		var grade=document.getElementById("grade");
+		var form=document.getElementById("form");
+		
+		form.addEventListener("submit",function(e){
+		e.preventDefault();
+		var tamil=document.getElementById("tamil").value;
+		var english=document.getElementById("english").value;
+		var math=document.getElementById("math").value;
+		var science=document.getElementById("science").value;
+		var social=document.getElementById("social").value;
+			if(tamil<=100 && english<=100 && math<=100 && science<=100 && social<=100){
+			var tot=parseInt(tamil)+parseInt(english)+parseInt(math)+parseInt(science)+parseInt(social);
+			total.innerText=`Total mark = ${tot}`;
+			var avg=tot/5;
+			average.innerText=`Average mark = ${avg}`;
+				if(tamil>39 && english>39 && math>39 && science>39 && social>39){
+					switch(true){
+						case (avg>90):grade.innerText="You got S grade";
+						break;
+						case (avg<=90 && avg>80):grade.innerText="You got A grade";
+						break;
+						case (avg<=80 && avg>70):grade.innerText="You got B grade";
+						break;
+						case (avg<=70 && avg>60):grade.innerText="You got C grade";
+						break;
+						case (avg<=60 && avg>50):grade.innerText="You got D grade";
+						break;
+						default:grade.innerText="You got E grade";
+					}
+				}
+				else{
+					grade.innerText="You got F grade";
+				}
+				}
+			else{
+				grade.innerText="Entered wrong marks";
+			}
+			
+		});
+		
+			
+	</script>
+	</body>
+</html>
